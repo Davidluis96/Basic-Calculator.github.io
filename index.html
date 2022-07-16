@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body{
+            background-color: #EFD7F4;
+        }
+        h1{
+            color: azure;
+            text-shadow: 5px 2px 1px#202004 ;
+            font-size: 40px;
+        }
+        #contenedor{
+            background-color: #A9618E;
+            border: 2px solid #202004;
+            border-radius: 30px;
+            display: block;
+            margin: 100px auto;
+            width: 650px;
+            text-align: center;
+        }
+        #contenedor div:nth-child(1){
+            margin: 40px 20px;
+        }
+        #contenedor div span{
+            color: red;
+            font-size: 22px;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px #202004;
+        }
+        div > label{
+            color: #FFFFFF;
+            font-size: 20px;
+            font-weight: 550;
+            letter-spacing: 0.5px;
+            
+        }
+        div > input{
+            border: 2px solid #202004;
+            display: block;
+            margin: 15px auto;
+            padding: 10px 20px;
+            text-align: center;
+            font-size: 20px;
+        }
+        div > button{
+            background-color: #5F274A;
+            color: #FFFFFF;
+            font-size: 16px;
+            border: 1px solid white;
+            border-radius: 10px;
+            margin: 30px 15px;
+            padding: 20px 30px;
+            text-align: center;
+        }
+        div > button:hover{
+            background-color: #E5D7F4;
+            border: 1px solid #202004;
+            color: #5F274A;
+        }
+        #borrarCampos{
+            margin: 15px 15px;
+            padding: 10px 15px;
+        }
+    </style>
+</head>
+
+<body>  
+    <div id="contenedor">
+        <h1>Calculadora Básica</h1>
+        <div>
+            <label>Numero 1:</label>
+            <input id="numero-uno" type="number" autofocus>
+
+            <label>Numero 2:</label>
+            <input id="numero-dos" type="number">
+            <span id="error"></span>
+        </div>
+        <div>
+            <button onclick="sumar()">Sumar</button>
+            <button onclick="restar()">Restar</button>
+            <button onclick="multiplicar()">Multiplicar</button>
+            <button onclick="dividir()">Dividir</button>
+        </div>
+        <div>
+            <label>Resultado</label>
+            <input id="resultado" type="text">
+            <button id="borrarCampos" onclick= "borrarCampos()">Borrar Campos</button>
+        </div>
+    </div>
+    <script>
+        
+        function sumar(){
+            var numeroUno = parseInt(document.getElementById("numero-uno").value);
+            var numeroDos = parseInt(document.getElementById("numero-dos").value);
+            console.log(numeroUno)
+            if(isNaN(numeroUno) || isNaN(numeroDos)){
+                    document.getElementById("error").innerHTML = "Campos Vacíos"
+            }else{
+                var ocultarError = document.getElementById("error");
+                ocultarError.style.setProperty("display","none")
+                var suma = numeroUno+numeroDos;
+                document.getElementById("resultado").value = suma;
+            }
+        }
+        function restar(){
+            var numeroUno = parseInt(document.getElementById("numero-uno").value);
+            var numeroDos = parseInt(document.getElementById("numero-dos").value);
+            if(isNaN(numeroUno) || isNaN(numeroDos)){
+                    document.getElementById("error").innerHTML = "Campos Vacíos"
+            }else{
+                var ocultarError = document.getElementById("error");
+                ocultarError.style.setProperty("display","none")
+                var restar = numeroUno-numeroDos;
+                document.getElementById("resultado").value = restar;
+            }   
+        }
+        function multiplicar(){
+            var numeroUno = parseInt(document.getElementById("numero-uno").value);
+            var numeroDos = parseInt(document.getElementById("numero-dos").value);
+            if(isNaN(numeroUno) || isNaN(numeroDos)){
+                    document.getElementById("error").innerHTML = "Campos Vacíos"
+            }else{
+                var ocultarError = document.getElementById("error");
+                ocultarError.style.setProperty("display","none")
+                var multiplicar = numeroUno*numeroDos;
+                document.getElementById("resultado").value = multiplicar;
+            }
+        }
+        function dividir(){
+            var numeroUno = parseInt(document.getElementById("numero-uno").value);
+            var numeroDos = parseInt(document.getElementById("numero-dos").value);
+            if(isNaN(numeroUno) || isNaN(numeroDos)){
+                    document.getElementById("error").innerHTML = "Campos Vacíos"
+            }else{
+                var ocultarError = document.getElementById("error");
+                ocultarError.style.setProperty("display","none")
+                var dividir = numeroUno/numeroDos;
+                document.getElementById("resultado").value = dividir;
+            }
+        }
+        function borrarCampos(){
+            var numeroUno = parseInt(document.getElementById("numero-uno").value);
+            var numeroDos = parseInt(document.getElementById("numero-dos").value);
+            var resultado = parseInt(document.getElementById("resultado").value);
+            document.getElementById("numero-uno").value = "";
+            document.getElementById("numero-dos").value = "";
+            document.getElementById("resultado").value = "";
+            document.getElementById("numero-uno").focus();
+        }
+    </script>
+</body>
+</html>
